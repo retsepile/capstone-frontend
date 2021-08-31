@@ -1,6 +1,6 @@
-  #gallery{
+  .gallery-content{
       display: flex;
-      flex-direction: column;
+     
   }
 
   .zoomout img {
