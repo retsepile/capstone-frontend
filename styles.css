@@ -3,7 +3,7 @@ box-sizing: border-box;
 }
 
 body{
-    background-image: url("https://picsum.photos/id/164/1500/800");
+    background-image: url("./image5.jpeg");
     background-repeat: no-repeat;
     object-fit: cover;
 }
@@ -12,7 +12,7 @@ body{
 	height: 60px;
 	width: 100%;
   position: relative;
-  background-color: black;
+  background-color:transparent;
 }
 
 .navbar-header {
@@ -124,7 +124,7 @@ body{
 button{
   width:200px;
   height:70px;
-  background: black;
+  background:white ;
   border-style: none;
   color:#fff;
   font-size: 23px;
@@ -228,4 +228,10 @@ button:hover{
 }
 button:hover span{
   animation-play-state: paused;
+}
+
+.mini-content{
+  color: white;
+  display: flex;
+  justify-content: center ;
 }
