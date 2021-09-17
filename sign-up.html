@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>registration</title>
+    <link rel="stylesheet" href="./sign-up.css" />
+  </head>
+  <body>
+    <h2>SIGN-UP</h2>
+    <form
+      id="contact-form"
+      action="https://karabo02.herokuapp.com/sign-up"
+      method="POST"
+    >
+      <!--For the email label-->
+      <div class="form-group">
+        <label class="from-labels" for="name">First Name</label>
+        <input
+          class="form-input"
+          type="text"
+          name="first_name"
+          id="first_name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="from-labels" for="name">Last Name</label>
+        <input
+          class="form-input"
+          type="text"
+          name="last_name"
+          id="last_name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label class="from-labels" for="name">User name</label>
+        <input
+          class="form-input"
+          type="text"
+          name="username"
+          id="username"
+          required
+        />
+      </div>
+
+      <div class="form-group"></div>
+      <!--For the contact label-->
+      <div class="form-group">
+        <label class="from-labels" for="password">Password</label>
+        <input
+          class="form-input"
+          type="password"
+          name="password"
+          id="contact"
+          required
+        />
+      </div>
+      
+      <div class="form-group"></div>
+      <!--For the contact label-->
+      <div class="form-group">
+        <label class="from-labels" for="email">Email</label>
+        <input
+          class="form-input"
+          type="email"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+
+      <!-- The submit button-->
+
+      <button onclick="event.preventDefault(), register()" class="button" type="submit">Send</button>
+    </form>
+    <script src="./java.js"></script>
+  </body>
+</html>

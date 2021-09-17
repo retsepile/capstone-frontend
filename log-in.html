@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log-in</title>
+    <link rel="stylesheet" href="./log-in.css" />
+    
+  </head>
+  <body>
+    <div class="body-container">
+      <div class="container">
+        <div class="form-wrapper">
+          <img src="" alt="" />
+          <h1 class="heading">Login/Register</h1>
+          <div class="form-box">
+            <form
+              id="contact-form"
+              
+              method="POST"
+            >
+              <!--For the email label-->
+              <div class="form-group">
+                <label class="from-labels" for="username">Username</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  name="username"
+                  id="username"
+                  
+                  required
+                />
+              </div>
+              <!--For the contact label-->
+              <div class="form-group">
+                <label class="from-labels" for="contact">Password</label>
+                <input
+                  class="form-input"
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                />
+              </div>
+
+              <!-- The submit button-->
+              <div class="buttons-flex">
+                <button class="button" onclick="event.preventDefault(), login()"  type="submit">
+                  LOG-IN
+                </button>
+
+                <a class="register-link" href="./sign-up.html">SIGN-UP</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./java.js"></script>
+  </body>
+</html>
