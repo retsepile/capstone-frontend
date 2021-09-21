@@ -35,13 +35,11 @@ fetch("https://karabo02.herokuapp.com/location/")
       </div>
       <div class="modal-body">
         <p>Price of booking: ${bookings[3]}</p>
-        <form>
-        <label for="fullname">First name:</label><br>
-        <input type="text" id="fullname" name="fullname"><br>
-        <label for="lastname">Last name:</label><br>
-        <input type="text" id="lastname" name="lastname"><br><br>
-        <label for="quantity">Number Of Days:</label> <br><br>
-  <input type="number" id="num_days" name="num_days" min="1" max="10"><br><br>
+        <form onsubmit="event.preventDefault(); makeBooking(${ bookings[0] })">
+        <label for="from_date">From date:</label><br>
+        <input type="date" id="from_date-${bookings[0]}" name="from_date"><br>
+        <label for="to_date">To date:</label><br>
+        <input type="date" id="to_date-${bookings[0]}" name="to_date"><br>
         <input type="submit" value="Submit">
       </form> 
 
@@ -151,3 +149,56 @@ fetch("https://karabo02.herokuapp.com/location/")
       // showBookings(Object.entries(booking));
       makeAppointments(foundbookings)
     }
+
+
+   
+    function makeBooking(place_id){
+      let user = JSON.parse(localStorage.getItem("user"))
+      if (!user){
+        location.href = "./log-in.html"
+      }
+      let place = client.find(place => place[0] == place_id)
+      let price = place[3].substring(2);
+      let from_date = new Date(document.querySelector(`#from_date-${place_id}`).value);
+      let to_date = new Date(document.querySelector(`#to_date-${place_id}`).value);
+
+      let diffTime = Math.abs(to_date - from_date)
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+      // const diff_in_time = to_date.getDate() - from_date.getDate();
+
+      // let days = diff_in_time / (1000 * 3600 * 24);
+      // days = Math.round(days)
+      console.log(user, price, from_date, to_date, diffDays)
+      console.log("Price is: ", price * diffDays)
+
+      let booking = {
+        user_id : user[0],
+        from_date,
+        to_date,
+        payment: diffDays * price
+      }
+
+       fetch(`https://karabo02.herokuapp.com/payment/`, {
+         method: "POST",
+         body: JSON.stringify(booking),
+         headers: {
+          "Content-type": "application/json",
+         }
+       })
+       .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data["status_code"] == 201) {
+            alert(`Booking was made for:
+            ${ user[1] }
+            FROM: ${from_date}
+            TO: ${to_date}
+            TOTAL DAYS: ${diffDays}
+            TOTAL PRICE: ${diffDays * price}
+            `);
+            // window.location.replace('./view.html')
+          } 
+        });
+    }
+
